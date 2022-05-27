@@ -1,3 +1,12 @@
+# Example input:
+
+# 60, 100, 120
+# 10, 20, 30
+# 50
+
+# Output:
+# 220
+
 values = input().split(', ')
 weight = input().split(', ')
 bp_max_weight = int(input())
