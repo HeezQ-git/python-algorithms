@@ -1,3 +1,18 @@
+# Example input:
+
+# 7
+# Warszawa Paris
+# Warszawa Berlin
+# Berlin Zurich
+# Paris Rome
+# Rome Madrid
+# Rome Zurich
+# Madrid Zurich
+# Warszawa
+# Zurich
+
+# Output: 2
+
 def BFS(start, end, num_nodes, graph):
     visited = [False] * num_nodes
     distance = [0] * num_nodes
