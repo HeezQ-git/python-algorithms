@@ -31,7 +31,7 @@ def merge_sort(m):
 
 classes = []
 
-classes_amount = int(input("Podaj ilość klas: "))
+classes_amount = int(input())
 _class = []
 counter = 0
 
