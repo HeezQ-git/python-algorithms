@@ -17,25 +17,24 @@
 # Input: [[5,6],[2,6],[0,1],[9,0],[3,9],[5,3]]
 # Output: [2,6,5,3,9,0,1]
 
-tab = input()
+blocks = input()[1:-1].split('[')
 
-nums = []
-tab = tab[1:-1].split('[')
-for num in tab:
-    if num == '': continue
-    _tab = num[:-1].split(',') if num[-1] != ',' else num[:-2].split(',')
-    nums.append([int(x) for x in _tab])
+numbers = []
+for number in blocks:
+    if number == '': continue
+    _blocks = number[:-1].split(',') if number[-1] != ',' else number[:-2].split(',')
+    numbers.append([int(x) for x in _blocks])
 
 unique = []
-for num in nums:
-    for x in num:
+for number in numbers:
+    for x in number:
         if x not in unique:
             unique.append(x)
 
 occurence = [0] * len(unique)
 
-for num in nums:
-    for x in num:
+for number in numbers:
+    for x in number:
         occurence[unique.index(x)] += 1
 
 result = ['_'] * len(unique)
@@ -50,13 +49,15 @@ for i in range(len(occurence) - 1, -1, -1):
         result[-1] = unique[i]
         break
 
-num = None
+number = None
 for i in range(len(result)):
     if result[i] == '_':
-        num = result[i - 1]
-        for j in nums:
-            if result[i] == '_' and num in j:
-                if j[0] == num and j[1] not in result: result[i] = j[1]
-                elif j[0] not in result: result[i] = j[0]
+        number = result[i - 1]
+
+        for block in numbers:
+            if number not in block: continue
+
+            if (block[0] == number) and (block[1] not in result): result[i] = block[1]
+            elif block[0] not in result: result[i] = block[0]
 
 print(result)
